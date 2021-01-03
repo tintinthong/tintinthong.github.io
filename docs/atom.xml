@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>&lt;site-title-here&gt;</title>
-    <link href="https://&lt;your-domain-here&gt;/atom.xml" rel="self" type="application/rss+xml" />
-  <updated>2020-04-08T20:00:SZ</updated>
+    <title>tintinthong&#39;s personal site</title>
+    <link href="https://tintinthong.github.io/atom.xml" rel="self" type="application/rss+xml" />
+  <updated>2021-01-03T05:19:SZ</updated>
   <author>
-      <name>&lt;author-name-here&gt;</name>
+      <name>tintinthong</name>
   </author>
-  <id>https://&lt;your-domain-here&gt;/</id>
+  <id>https://tintinthong.github.io/</id>
 
   <entry>
       <title>Sample Post</title>
-      <link href="https://&lt;your-domain-here&gt;posts/sample-post.html"/>
-      <id>https://&lt;your-domain-here&gt;posts/sample-post.html</id>
+      <link href="https://tintinthong.github.ioposts/sample-post.html"/>
+      <id>https://tintinthong.github.ioposts/sample-post.html</id>
       <updated>2019-01-01T00:00:SZ</updated>
       <category term="slick"/>
       <category term="site"/>

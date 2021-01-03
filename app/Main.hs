@@ -1,8 +1,8 @@
-{-# LANGUAGE NamedFieldPuns        #-}
-{-# LANGUAGE DeriveGeneric         #-}
 {-# LANGUAGE DeriveAnyClass        #-}
-{-# LANGUAGE OverloadedStrings     #-}
+{-# LANGUAGE DeriveGeneric         #-}
 {-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE NamedFieldPuns        #-}
+{-# LANGUAGE OverloadedStrings     #-}
 
 module Main where
 
@@ -13,23 +13,23 @@ import           Data.Aeson.Lens
 import           Data.Time
 import           Development.Shake
 import           Development.Shake.Classes
-import           Development.Shake.Forward
 import           Development.Shake.FilePath
+import           Development.Shake.Forward
 import           GHC.Generics               (Generic)
 import           Slick
 
-import qualified Data.HashMap.Lazy as HML
+import qualified Data.HashMap.Lazy          as HML
 import qualified Data.Text                  as T
 
 ---Config-----------------------------------------------------------------------
 
 siteMeta :: SiteMeta
 siteMeta =
-    SiteMeta { siteAuthor = "Me"
-             , baseUrl = "https://example.com"
-             , siteTitle = "My Slick Site"
-             , twitterHandle = Just "myslickhandle"
-             , githubUser = Just "myslickgithubuser"
+    SiteMeta { siteAuthor = "tintinthong"
+             , baseUrl = "https://tintinthong.github.io"
+             , siteTitle = "tintinthong's personal site"
+             , twitterHandle = Just "tintinthong"
+             , githubUser = Just "tintinthong"
              }
 
 outputFolder :: FilePath
@@ -43,43 +43,47 @@ withSiteMeta (Object obj) = Object $ HML.union obj siteMetaObj
     Object siteMetaObj = toJSON siteMeta
 withSiteMeta _ = error "only add site meta to objects"
 
-data SiteMeta =
-    SiteMeta { siteAuthor    :: String
-             , baseUrl       :: String -- e.g. https://example.ca
-             , siteTitle     :: String
-             , twitterHandle :: Maybe String -- Without @
-             , githubUser    :: Maybe String
-             }
+data SiteMeta = SiteMeta
+    { siteAuthor    :: String
+    -- e.g. https://example.ca
+    , baseUrl       :: String -- e.g. https://example.ca
+    , siteTitle     :: String
+    -- Without @
+    , twitterHandle :: Maybe String -- Without @
+    , githubUser    :: Maybe String
+    }
     deriving (Generic, Eq, Ord, Show, ToJSON)
 
 -- | Data for the index page
-data IndexInfo =
-  IndexInfo
+data IndexInfo = IndexInfo
     { posts :: [Post]
-    } deriving (Generic, Show, FromJSON, ToJSON)
+    }
+    deriving (Generic, Show, FromJSON, ToJSON)
 
 type Tag = String
 
 -- | Data for a blog post
-data Post =
-    Post { title       :: String
-         , author      :: String
-         , content     :: String
-         , url         :: String
-         , date        :: String
-         , tags        :: [Tag]
-         , description :: String
-         , image       :: Maybe String
-         }
+data Post = Post
+    { title       :: String
+    , author      :: String
+    , content     :: String
+    , url         :: String
+    , date        :: String
+    , tags        :: [Tag]
+    , description :: String
+    , image       :: Maybe String
+    }
     deriving (Generic, Eq, Ord, Show, FromJSON, ToJSON, Binary)
 
-data AtomData =
-  AtomData { title        :: String
-           , domain       :: String
-           , author       :: String
-           , posts        :: [Post]
-           , currentTime  :: String
-           , atomUrl      :: String } deriving (Generic, ToJSON, Eq, Ord, Show)
+data AtomData = AtomData
+    { title       :: String
+    , domain      :: String
+    , author      :: String
+    , posts       :: [Post]
+    , currentTime :: String
+    , atomUrl     :: String
+    }
+    deriving (Generic, ToJSON, Eq, Ord, Show)
 
 -- | given a list of posts this will build a table of contents
 buildIndex :: [Post] -> Action ()
