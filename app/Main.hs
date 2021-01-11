@@ -65,11 +65,10 @@ type Tag = String
 -- | Data for a blog post
 data Post = Post
     { title       :: String
-    , author      :: String
+    -- , author      :: String
     , content     :: String
     , url         :: String
-    , date        :: String
-    , tags        :: [Tag]
+    -- , date        :: String
     , description :: String
     , image       :: Maybe String
     }
@@ -96,7 +95,7 @@ buildIndex posts' = do
 -- | Find and build all posts
 buildPosts :: Action [Post]
 buildPosts = do
-  pPaths <- getDirectoryFiles "." ["site/posts//*.md"]
+  pPaths <- getDirectoryFiles "." ["site/posts//*.org"]
   forP pPaths buildPost
 
 -- | Load a post, process metadata, write it to output, then return the post object
@@ -106,7 +105,7 @@ buildPost srcPath = cacheAction ("build" :: T.Text, srcPath) $ do
   liftIO . putStrLn $ "Rebuilding post: " <> srcPath
   postContent <- readFile' srcPath
   -- load post content and metadata as JSON blob
-  postData <- markdownToHTML . T.pack $ postContent
+  postData <- orgToHTML . T.pack $ postContent
   let postUrl = T.pack . dropDirectory1 $ srcPath -<.> "html"
       withPostUrl = _Object . at "url" ?~ String postUrl
   -- Add additional metadata we've been able to compute
@@ -127,6 +126,9 @@ formatDate humanDate = toIsoDate parsedTime
   where
     parsedTime =
       parseTimeOrError True defaultTimeLocale "%b %e, %Y" humanDate :: UTCTime
+    -- parsedTime =
+    --   parseTimeOrError True defaultTimeLocale "&lt;%Y-%-m-%-d %a&gt;" humanDate :: UTCTime
+      -- can you find a way to parse more than one format here pls
 
 rfc3339 :: Maybe String
 rfc3339 = Just "%H:%M:SZ"
@@ -142,15 +144,15 @@ buildFeed posts = do
           { title = siteTitle siteMeta
           , domain = baseUrl siteMeta
           , author = siteAuthor siteMeta
-          , posts = mkAtomPost <$> posts
+          , posts = posts  -- mkAtomPost <$> posts
           , currentTime = toIsoDate now
           , atomUrl = "/atom.xml"
           }
   atomTempl <- compileTemplate' "site/templates/atom.xml"
   writeFile' (outputFolder </> "atom.xml") . T.unpack $ substitute atomTempl (toJSON atomData)
-    where
-      mkAtomPost :: Post -> Post
-      mkAtomPost p = p { date = formatDate $ date p }
+    -- where
+    --   mkAtomPost :: Post -> Post
+    --   mkAtomPost p = p { date = formatDate $ date p }
 
 -- | Specific build rules for the Shake system
 --   defines workflow to build the website
@@ -158,7 +160,7 @@ buildRules :: Action ()
 buildRules = do
   allPosts <- buildPosts
   buildIndex allPosts
-  buildFeed allPosts
+  -- buildFeed allPosts
   copyStaticFiles
 
 main :: IO ()

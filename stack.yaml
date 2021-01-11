@@ -4,4 +4,4 @@ packages:
 - .
 
 extra-deps:
-- slick-1.0.1.1
+- ../slick/

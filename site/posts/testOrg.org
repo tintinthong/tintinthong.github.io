@@ -1,0 +1,29 @@
+
+#+TITLE: Test Org
+# #+AUTHOR: tintinthong
+# #+DATE: <2021-01-11 Mon>
+#+DESCRIPTION: this is a description
+
+This is the story of a guy
+
+
+#+begin_src bash
+npm install
+ls
+cd
+#+end_src
+
+* HEADING
+#+DESCRIPTION: this is a heading
+:END:
+HEADING
+
+This is an org file
+
+| topic  | something |
+|--------+-----------|
+| justin | jshihs_   |
+| justin | jshihs_   |
+| rachel | jshihs_   |
+
+* ANOTHER
