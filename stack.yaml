@@ -4,4 +4,5 @@ packages:
 - .
 
 extra-deps:
-- ./slick/
+- git: https://github.com/tintinthong/slick.git
+  commit: d36933532b18833c82a68a36d59ca5a013347837

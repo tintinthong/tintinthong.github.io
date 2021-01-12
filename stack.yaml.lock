@@ -3,7 +3,18 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    name: slick
+    version: 1.0.1.1
+    git: https://github.com/tintinthong/slick.git
+    pantry-tree:
+      size: 880
+      sha256: e4311f208e2c6d6c94a9f63158a09a4bfc498ee6d17633546d9e79c940b966cb
+    commit: d36933532b18833c82a68a36d59ca5a013347837
+  original:
+    git: https://github.com/tintinthong/slick.git
+    commit: d36933532b18833c82a68a36d59ca5a013347837
 snapshots:
 - completed:
     size: 524164
