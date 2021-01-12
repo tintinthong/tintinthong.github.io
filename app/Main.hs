@@ -122,14 +122,18 @@ copyStaticFiles = do
     void $ forP filepaths $ \filepath ->
         copyFileChanged ("site" </> filepath) (outputFolder </> filepath)
 
+
 formatDate :: String -> String
 formatDate humanDate = toIsoDate parsedTime
   where
     parsedTime =
-      parseTimeOrError True defaultTimeLocale "%b %e, %Y" humanDate :: UTCTime
-    -- parsedTime =
-    --   parseTimeOrError True defaultTimeLocale "&lt;%Y-%-m-%-d %a&gt;" humanDate :: UTCTime
-      -- can you find a way to parse more than one format here pls
+      parseTimeOrError True defaultTimeLocale "%Y-%-m-%-d %a"  ( removeBrackets humanDate ) :: UTCTime
+    -- "%b %e, %Y"
+    -- right now date is not in correct format. is simplified till you are able to parse string between brackets
+
+-- only specific to org mode date
+removeBrackets :: String -> String
+removeBrackets humanDate = ( init . tail $ humanDate )
 
 rfc3339 :: Maybe String
 rfc3339 = Just "%H:%M:SZ"

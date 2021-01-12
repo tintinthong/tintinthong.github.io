@@ -1,7 +1,7 @@
 
 #+TITLE: Sample Post
 # #+AUTHOR: tintinthong
-# #+DATE: <2021-01-11 Mon>
+#+DATE: <2021-01-11 Mon>
 #+DESCRIPTION: this is a description
 #+IMAGE: ../images/catalan.png
 
