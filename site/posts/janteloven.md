@@ -7,6 +7,8 @@ description: Culture in Nordic
 image: grod.jpg
 ---
 
+**  Some heading here?
+
 Janteloven: I came across this cultural term through my travels to
 Copenhagen, Denmark. If you ask any person in Denmark they
 would recall it as the story told to them when they were children

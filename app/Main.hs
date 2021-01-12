@@ -112,6 +112,7 @@ buildPost srcPath = cacheAction ("build" :: T.Text, srcPath) $ do
   let fullPostData = withSiteMeta . withPostUrl $ postData
   template <- compileTemplate' "site/templates/post.html"
   writeFile' (outputFolder </> T.unpack postUrl) . T.unpack $ substitute template fullPostData
+  liftIO . print $ fullPostData
   convert fullPostData
 
 -- | Copy all static files from the listed folders to their destination
