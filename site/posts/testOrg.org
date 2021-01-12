@@ -6,6 +6,7 @@
 
 This is the story of a guy
 
+I modified this
 
 #+begin_src bash
 npm install
@@ -13,7 +14,8 @@ ls
 cd
 #+end_src
 
-* HEADING
+** what the hell
+** HEADING
 #+DESCRIPTION: this is a heading
 :END:
 HEADING
@@ -26,4 +28,5 @@ This is an org file
 | justin | jshihs_   |
 | rachel | jshihs_   |
 
-* ANOTHER
+** ANOTHER
+hi something
