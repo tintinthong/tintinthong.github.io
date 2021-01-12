@@ -1,0 +1,62 @@
+
+#+TITLE: Sample Post
+# #+AUTHOR: tintinthong
+# #+DATE: <2021-01-11 Mon>
+#+DESCRIPTION: this is a description
+#+IMAGE: ../images/catalan.png
+
+Note: h1 heading is not supported in this template, but you can resolve that by just giving a styel to the html tag.
+
+** Formatting
+
+*** Code
+
+#+begin_src bash
+npm install
+ls
+cd
+#+end_src
+
+#+begin_src haskell
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+    let smallerSorted = quicksort [a | a <- xs, a <= x]
+        biggerSorted = quicksort [a | a <- xs, a > x]
+    in  smallerSorted ++ [x] ++ biggerSorted
+#+end_src
+
+*** Table
+
+| Student  | Maths | Physics | Mean |
+|----------+-------+---------+------|
+| Bertrand |    13 |      09 |   11 |
+| Henri    |    15 |      14 | 14.5 |
+| Arnold   |    17 |      13 |   15 |
+|----------+-------+---------+------|
+| Means    |    15 |      12 |      |
+#+TBLFM: $4=vmean($2..$3)::@5$2=vmean(@2$2..@4$2)::@5$3=vmean(@2$3..@4$3)
+
+*** Links
+
+[[../images/chess.jpg][Chess Picture]]
+*** Bullet Points
+
+**** Goals and ambitions
+- [ ] Have super powers
+- [ ] Date a movie star
+- [ ] Own a dryer
+
+**** TODO Do what mum told you [1/3]
+DEADLINE: <2022-01-12 Wed>
+- [ ] grow up
+- [ ] stop acting like a kid
+- [X] move out of the house
+
+
+*** Images
+
+
+#+attr_html: :width 200px
+[[../images/chess.jpg]]
+

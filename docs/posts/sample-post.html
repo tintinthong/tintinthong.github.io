@@ -3,14 +3,14 @@
 <head profile="http://www.w3.org/2005/10/profile">
     <meta charset="UTF-8">
     <meta name="description" content="tintinthong&#39;s personal site">
-    <meta name="author" content="Me">
+    <meta name="author" content="">
     <meta name=viewport content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@tintinthong">
 <meta name="twitter:creator" content="@tintinthong">
 <meta name="twitter:title" content="Sample Post">
-    <meta name="twitter:description" content="My first blog post using slick">
-    <meta name="twitter:image" content="https://tintinthong.github.io/images/code.jpg">
+    <meta name="twitter:description" content="this is a description">
+    <meta name="twitter:image" content="https://tintinthong.github.io/images/../images/catalan.png">
     <title>Sample Post</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/syntax.css">
@@ -43,22 +43,86 @@
             </span>
             <br>
 
-            <img class="post-image" src="/images/code.jpg">
+            <img class="post-image" src="/images/../images/catalan.png">
             <br>
-            <span class="byline">by Me</span>
             <br>
-            <span class="date">Jan 1, 2019</span>
+            <span class="date"></span>
             <br>
             <div class="metadata">
             </div>
             <div class="tags">
-              <span class="tag slick">slick</span>
-              <span class="tag site">site</span>
             </div>
         </div>
     </div>
     <article class="post">
-        <p>Welcome to your first blog post!</p>
+        <p>Note: h1 heading is not supported in this template, but you can resolve that by just giving a styel to the html tag.</p>
+<h2>Formatting</h2>
+<h3>Code</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">npm</span> install</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ls</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="bu">cd</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1"></a><span class="ot">quicksort ::</span> (<span class="dt">Ord</span> a) <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a]</span>
+<span id="cb2-2"><a href="#cb2-2"></a>quicksort [] <span class="ot">=</span> []</span>
+<span id="cb2-3"><a href="#cb2-3"></a>quicksort (x<span class="op">:</span>xs) <span class="ot">=</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="kw">let</span> smallerSorted <span class="ot">=</span> quicksort [a <span class="op">|</span> a <span class="ot">&lt;-</span> xs, a <span class="op">&lt;=</span> x]</span>
+<span id="cb2-5"><a href="#cb2-5"></a>        biggerSorted <span class="ot">=</span> quicksort [a <span class="op">|</span> a <span class="ot">&lt;-</span> xs, a <span class="op">&gt;</span> x]</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="kw">in</span>  smallerSorted <span class="op">++</span> [x] <span class="op">++</span> biggerSorted</span></code></pre></div>
+<h3>Table</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Student</th>
+<th>Maths</th>
+<th>Physics</th>
+<th>Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bertrand</td>
+<td>13</td>
+<td>09</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>Henri</td>
+<td>15</td>
+<td>14</td>
+<td>14.5</td>
+</tr>
+<tr class="odd">
+<td>Arnold</td>
+<td>17</td>
+<td>13</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>Means</td>
+<td>15</td>
+<td>12</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Links</h3>
+<p><a href="../images/chess.jpg">Chess Picture</a></p>
+<h3>Bullet Points</h3>
+<ol>
+<li><p>Goals and ambitions</p>
+<ul>
+<li>[ ] Have super powers</li>
+<li>[ ] Date a movie star</li>
+<li>[ ] Own a dryer</li>
+</ul></li>
+<li><p><span class="todo TODO">TODO</span> Do what mum told you [1/3]</p>
+<ul>
+<li>[ ] grow up</li>
+<li>[ ] stop acting like a kid</li>
+<li>[X] move out of the house</li>
+</ul></li>
+</ol>
+<h3>Images</h3>
+<p><img src="../images/chess.jpg" width="200" /></p>
 
         <br>
         <br>

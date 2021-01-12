@@ -1,11 +1,14 @@
----
-title: "Janteloven"
-author: Me
-date: Jun 26, 2016
-tags: [ others ] 
-description: Culture in Nordic 
-image: grod.jpg
----
+# ---
+# title: "Janteloven"
+# author: Me
+# date: Jun 26, 2016
+# tags: [ others ]
+# description: Culture in Nordic
+# image: grod.jpg
+# ---
+
+#+TITLE: Janteloven
+#+DESCRIPTION: this is a description
 
 **  Some heading here?
 
