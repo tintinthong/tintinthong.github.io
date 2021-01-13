@@ -3,12 +3,12 @@ function switchTheme() {
   var html = document.getElementsByTagName("html")[0];
   html.classList.toggle("dark");
 
-  if (button.innerHTML == "LIGHT-MODE") {
-    button.innerHTML = "DARK-MODE";
+  if (button.innerHTML == "DAY-MODE") {
+    button.innerHTML = "NIGHT-MODE";
     // Expire in two months
     setCookie("theme", "day", 60 * 24 * 60 * 60 * 1000);
   } else {
-    button.innerHTML = "LIGHT-MODE";
+    button.innerHTML = "DAY-MODE";
     // Expire in two months
     setCookie("theme", "night", 60 * 24 * 60 * 60 * 1000);
   }
@@ -38,5 +38,6 @@ if (getCookie("theme") == "night") {
 }
 
 // Switch theme if button is clicked.
-var button = document.getElementById("theme-button");
+// var button = document.getElementById("theme-button");
+var button = document.getElementById("night-toggle");
 button.addEventListener("click", switchTheme);
