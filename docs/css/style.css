@@ -49,8 +49,8 @@ body {
           justify-content: center; }
 
 h2 {
-  font-family: inherit;
-  font-size: 1.25em;
+  /* font-family: inherit; */
+  font-size: 2em;
   font-variant: small-caps;
   text-align: center;
   width: 80%;
@@ -61,6 +61,7 @@ h2 {
 
 h3 {
   font-size: 1.4em;
+  font-weight: lighter;
   margin: 0.5em 0;
   text-align: center; }
 
