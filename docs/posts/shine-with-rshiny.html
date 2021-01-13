@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head profile="http://www.w3.org/2005/10/profile">
+    <meta charset="UTF-8">
+    <meta name="description" content="tintinthong&#39;s personal site">
+    <meta name="author" content="[&quot;tintinthong&quot;]">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tintinthong">
+<meta name="twitter:creator" content="@tintinthong">
+<meta name="twitter:title" content="Shine with Rshiny">
+    <meta name="twitter:description" content="Short tutorial on how to use Rshiny to making interactive visualisat|ns  ">
+    <meta name="twitter:image" content="https://tintinthong.github.io/images/../images/rshiny/main.png">
+    <title>Shine with Rshiny</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a id="beacon" href="/">
+                <div id="home-text"> HOME </div>
+            </a>
+        </nav>
+    
+        <div class="right-sidebar">
+            <a class="ext-link" href="https://github.com/tintinthong">
+            <img src="/images/github-logo.png" alt="Github Profile"/>
+        </a>
+
+            <a class="ext-link" href="https://twitter.com/tintinthong">
+            <img src="/images/twitter-logo.png" alt="Twitter Profile"/>
+        </a>
+    <div id="theme-button">DAY</div>
+        </div>
+    </header>
+
+<div id="page">
+    <div class="wrapper">
+        <div class="masthead">
+            <span class="title">
+                Shine with Rshiny
+            </span>
+            <br>
+
+            <img class="post-image" src="/images/../images/rshiny/main.png">
+            <br>
+            <span class="byline">by [&quot;tintinthong&quot;]</span>
+            <br>
+            <span class="date">2019-01-03</span>
+            <br>
+            <div class="metadata">
+            </div>
+            <div class="tags">
+            </div>
+        </div>
+    </div>
+    <article class="post">
+        <h2>Introduction</h2>
+<p>Today I hosted our first data science meetup at [Hacker Collective]<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The title of the meetup was "Building Reactive Data Applications with Rshiny". Rshiny helps you build quick visualisations of your data; It is a great way to visualise and observe changes in data while tweaking input values. Think "Turning knobs and seeing a graph change before your eyes". You can also see other examples [here]<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>Unfortunately, the framework is not well-known outside of the R community. One of the primary reasons that someone would use RShiny is if they are familiar with the R language, however it maintains its popularity in statistical research.</p>
+<h2>Tutorial</h2>
+<p>In this tutorial, we teach you how to build an app that adds two numbers. Hopefully, you will understand and learn enough concepts to build a full-fledged RShiny application.</p>
+<p>Rshiny is relatively easy to graps compared to the deeper and messier art of building a web site from scratch. For a website, you may need to know javascript, html and css. Whereas the only pre-requisite to build an rshiny application is knowing how to programme in R.</p>
+<h2>Installation</h2>
+<p>I suggest the best way to carry out this tutorial is by using [RStudio Cloud]<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>; that way you do not have to carry out any installation locally on your computer.</p>
+<h2>Rshiny Model</h2>
+<p>In web application programming, you learn client-server architecture. The idea is that your "data model" (as they call it) always resides on the server. That means any changes in the client should immediately update the changes in the server before changing the client again. Rshiny adopts similar principles except that they call it the UI (the client) and the server (the server)</p>
+<p>Think of it as a take-out pizza place.</p>
+<ol>
+<li><p>Pepperoni Pizza is ordered by a customer (the client)</p></li>
+<li><p>The waiter tells the kitchen (the server) to cook up a Pepperoni Pizza</p></li>
+<li><p>The kitchen then passes the pizza to back to the customer.</p>
+<p>Although you might not know fundamentals of client-server interaction, you will find that knowing this thought sequence will help you get the hang of Rshiny.</p></li>
+</ol>
+<div class="sourceCode" id="cb1" data-org-language="R"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#you can define global objects here</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="co">#ui goes here</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>server &lt;-<span class="cf">function</span>(input,output){</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>  <span class="co">#logic goes here</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>}</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="kw">shinyApp</span>(ui,server) <span class="co">#this runs the app</span></span></code></pre></div>
+<p>A whole entire RShiny app can be fit into a single file. It consists of 2 components mainly: the ui variable and the server function.</p>
+<ol>
+<li>ui variable:
+<ul>
+<li>layouts and panels</li>
+<li>input widgets</li>
+<li>ui outputs</li>
+</ul></li>
+<li>server function:
+<ul>
+<li>render functions</li>
+</ul></li>
+</ol>
+<p>The purpose of the ui variable is to handle anything visual. Layout and panels is similar to the "divs" and "containers" of the application. Input widgets are components that enable the user to execute input, e.g. slider, button. UI outputs are the components which display the output, e.g. graph, text.</p>
+<p>The server function executes all the logic of the application and renders it as an object using an input and output variable. For example, if I had a calculator that received two numbers and added them together. The server function would have two separate variables that stores both inputs and then outputs a number (the sum between the two stored variables). The additional pattern is that the output is not passed to the ui as a number; instead, it is rendered as some type (such as text or plot) so that the ui knows how to display/output it.</p>
+<h2>Building a Reactive App</h2>
+<p>Once you get the simple concept of simply passing variables from ui to server and/or from input to output then you would have understood all that needs to be known about RShiny.</p>
+<h3>Add the layout</h3>
+<p>Here we modify the ui. We can have a rough sketch of what the ui will look like without executing any functionality.</p>
+<div class="sourceCode" id="cb2" data-org-language="R"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>ui =<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="kw">titlePanel</span>(<span class="st">&quot;Adding Two Numbers&quot;</span>),</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="kw">fluidRow</span>(</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="kw">column</span>(<span class="dv">6</span>,</span>
+<span id="cb2-11"><a href="#cb2-11"></a>      <span class="kw">h2</span>(<span class="st">&quot;First number goes here&quot;</span>)</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    ),</span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="kw">column</span>(<span class="dv">6</span>,</span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a>      <span class="kw">h2</span>(<span class="st">&quot;Second number goes here&quot;</span>)</span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a>    )</span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a>  ),</span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="kw">fluidRow</span>(</span>
+<span id="cb2-25"><a href="#cb2-25"></a>  <span class="kw">mainPanel</span>(</span>
+<span id="cb2-26"><a href="#cb2-26"></a>    <span class="co">#the result is written here</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>  )</span>
+<span id="cb2-28"><a href="#cb2-28"></a>)</span>
+<span id="cb2-29"><a href="#cb2-29"></a></span>
+<span id="cb2-30"><a href="#cb2-30"></a>)</span>
+<span id="cb2-31"><a href="#cb2-31"></a></span></code></pre></div>
+<p>We first added a title for the application using `titlePanel()`. Here we added a first row to our page; and two columns within that row. RShiny uses bootstrap2, which follows rules of responsive design. The bootstrap concept is simple: there are 12 spaces in a row and you can distribute however many spaces to be included into each column as long as your the sum of spaces is 12. In this example, we created two columns, each having 6 spaces each. Equivalently, we are able to create three columns with 4 spaces each, so on and so forth.</p>
+<p>RShiny integrates common html tags, such as `&lt;h2&gt;&lt;/h2&gt;`. Although how we write it is in the form of a function `h2(text)` in R.</p>
+<p>We included an additional row with a `mainPanel()`. The `mainPanel()` is usually the place where you display the main output of your application; in this case, it is the sum.</p>
+<div class="sourceCode" id="cb3" data-org-language="R"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2"></a>ui =<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="kw">titlePanel</span>(<span class="st">&quot;Adding Two Numbers&quot;</span>),</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="kw">fluidRow</span>(</span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="kw">column</span>(<span class="dv">6</span>,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>      <span class="kw">h2</span>(<span class="st">&quot;First number goes here&quot;</span>),</span>
+<span id="cb3-10"><a href="#cb3-10"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;this is x&quot;</span>,<span class="dv">10</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    ),</span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="kw">column</span>(<span class="dv">6</span>,</span>
+<span id="cb3-15"><a href="#cb3-15"></a></span>
+<span id="cb3-16"><a href="#cb3-16"></a>      <span class="kw">h2</span>(<span class="st">&quot;Second number goes here&quot;</span>),</span>
+<span id="cb3-17"><a href="#cb3-17"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;y&quot;</span>,<span class="st">&quot;this is y&quot;</span>,<span class="dv">10</span>)</span>
+<span id="cb3-18"><a href="#cb3-18"></a></span>
+<span id="cb3-19"><a href="#cb3-19"></a>    )</span>
+<span id="cb3-20"><a href="#cb3-20"></a></span>
+<span id="cb3-21"><a href="#cb3-21"></a>  )</span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a>)</span>
+<span id="cb3-24"><a href="#cb3-24"></a></span></code></pre></div>
+<p>Next, we need only include the input widgets. To do that we use `numericInput()` widget: it takes a number in a text box and will return an error if the input is not a number.</p>
+<p>As you can see, we include a widget with id of "x", a label of "this is x", and a default value of 10. "id's" are the associative name that enables you to pass the variables between ui and server.</p>
+<p><img src="../images/rshiny/ui1.png" /></p>
+<h3>Adding the Logic and Rendering</h3>
+<p>"We have the inputs. Now how do we handle the server function?". The easiest way to perform this task is to include both the inputs directly into a rendering function. By default, whatever "id's" of widgets in the ui will become accessible to the server through the input variable.</p>
+<div class="sourceCode" id="cb4" data-org-language="R"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>server &lt;-<span class="cf">function</span>(input,output){</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  output<span class="op">$</span>sum=<span class="st"> </span><span class="kw">renderText</span>({</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="kw">paste</span>(<span class="st">&quot;x+y&quot;</span>,input<span class="op">$</span>x<span class="op">+</span>input<span class="op">$</span>y)</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  })</span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a>}</span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="kw">shinyApp</span>(ui,server) <span class="co">#this runs the app</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a></span></code></pre></div>
+<p>But, if you execute this, nothing (additional) will show on the front of the application. This is because a text object is rendered but not displayed/outputted yet.</p>
+<h3>Passing back to the UI</h3>
+<p>To pass the data back to the ui, we simply have to to associate the rendered object with an output in the ui via id too. Here we added a `textOutput()` component to take the id of "sum" which targets the rendered text output inside the server function.</p>
+<div class="sourceCode" id="cb5" data-org-language="R"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2"></a>ui =<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="kw">titlePanel</span>(<span class="st">&quot;Adding Two Numbers&quot;</span>),</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="kw">fluidRow</span>(</span>
+<span id="cb5-7"><a href="#cb5-7"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="kw">column</span>(<span class="dv">6</span>,</span>
+<span id="cb5-9"><a href="#cb5-9"></a>      <span class="kw">h2</span>(<span class="st">&quot;First number goes here&quot;</span>),</span>
+<span id="cb5-10"><a href="#cb5-10"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;this is x&quot;</span>,<span class="dv">10</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">100</span>)</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>    ),</span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a>    <span class="kw">column</span>(<span class="dv">6</span>,</span>
+<span id="cb5-15"><a href="#cb5-15"></a></span>
+<span id="cb5-16"><a href="#cb5-16"></a>      <span class="kw">h2</span>(<span class="st">&quot;Second number goes here&quot;</span>),</span>
+<span id="cb5-17"><a href="#cb5-17"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;y&quot;</span>,<span class="st">&quot;this is y&quot;</span>,<span class="dv">10</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">100</span>)</span>
+<span id="cb5-18"><a href="#cb5-18"></a></span>
+<span id="cb5-19"><a href="#cb5-19"></a>    )</span>
+<span id="cb5-20"><a href="#cb5-20"></a></span>
+<span id="cb5-21"><a href="#cb5-21"></a>  ),</span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a>   <span class="kw">fluidRow</span>(</span>
+<span id="cb5-24"><a href="#cb5-24"></a>     <span class="kw">mainPanel</span>(</span>
+<span id="cb5-25"><a href="#cb5-25"></a>       <span class="kw">h1</span>(<span class="kw">textOutput</span>(<span class="st">&quot;sum&quot;</span>))</span>
+<span id="cb5-26"><a href="#cb5-26"></a>       )</span>
+<span id="cb5-27"><a href="#cb5-27"></a>  )</span>
+<span id="cb5-28"><a href="#cb5-28"></a></span>
+<span id="cb5-29"><a href="#cb5-29"></a>)</span>
+<span id="cb5-30"><a href="#cb5-30"></a></span></code></pre></div>
+<p>If you think back, this is analagous to our pizza model,</p>
+<ol>
+<li>Take input from the ui</li>
+<li>Process the input as some data and attach it to the output</li>
+<li>Pass the output back to the ui</li>
+</ol>
+<p><img src="../images/rhinsy/ui2.png" /></p>
+<h2>Notes on Reactivity</h2>
+<p>Remember I said that the easiest way to pass inputs to a server is to include it directly into a rendering function. This is not the best way (generally).</p>
+<p>There is a significant problem of including both `input$x` and `input$y` in a rendering function. The reason is due to efficiency. If a person changes `input$x` from the slider, the `renderText()` will re-evaluate not only `input$x` but also `input$y`. Why are we doing two re-evaluations when only one is required – this becomes a problem of efficiency.</p>
+<p>To avoid this, we create auxiliary variables `x` and `y`, which are called reactive conductors. Reactive conductors cache their values and know when the values have become outdated – see [here]<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. The benefit of creating this separation is if `x()` was a very complicated function that takes a long time to run. If I touch the slider for `y`, I will not have to re-evaluate `x` all over again.</p>
+<div class="sourceCode" id="cb6" data-org-language="R"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2"></a>server &lt;-<span class="cf">function</span>(input,output){</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  x&lt;-<span class="kw">reactive</span>({input<span class="op">$</span>x})</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  y&lt;-<span class="kw">reactive</span>({input<span class="op">$</span>y})</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  output<span class="op">$</span>sum=<span class="st"> </span><span class="kw">renderText</span>({</span>
+<span id="cb6-8"><a href="#cb6-8"></a>    <span class="kw">x</span>()<span class="op">+</span><span class="kw">y</span>()</span>
+<span id="cb6-9"><a href="#cb6-9"></a>  })</span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a>}</span>
+<span id="cb6-12"><a href="#cb6-12"></a></span></code></pre></div>
+<p>In this example, we are not worried because the rendering function is only re-evaluating a single number; we can afford the such lag. However, let me assure you that when you are dealing with 10,000 rows of data, a simple filter can cost a latency of 2-3s to the user's experience. The more complex the filtering operation, the worse.</p>
+<h2>Important Things to Remember</h2>
+<p>From using Rshiny, I have noticed a few common mistakes that I always carry out. Hopefully, this will help you.</p>
+<ol>
+<li><p>All components in ui are separated by commas, whereas, variables, reactive functions and rendering functions within the server function are dealt with like normal contents of a function – there is no separator.</p></li>
+<li><p>Reactive rendering functions are those `({})` enclosed in additional curly brackets, e.g. `renderText({})`.</p></li>
+<li><p>When adding reactive variables to the server function remember to use `x()` not `x`. `x` will just return the character string of the function or the unevaluated form of the function.</p></li>
+<li><p>Typically, RShiny apps are not stored in a single file but three different files: `ui.R`,`server.R` and `global.R`.</p></li>
+<li><p>Use the `observe({})` function to debug and prototype reactive variables. Simply, print them within the function, e.g. `print(x())`.</p></li>
+</ol>
+<h2>Summary</h2>
+<p>There you have it. You have made an RShiny app in just minutes. To summarise, we have to get into the habit of thinking of the sequence of events. When a ui is edited, e.g. a slider moved, we have to handle the input in the server. After a server handles the data, we have to render it and pass it back top the ui. It is really that simple. Have fun building your shiny application!</p>
+<h2>Contribute</h2>
+<p>To play with this code, you can see it all [here]<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. I welcome any suggestions. In this tutorial, you saw the `appReactive.R` file in action. Here are three other example applications which I built in the same directory.</p>
+<ol>
+<li>`appLM.R`: An application that generates random points from a linear model with gradient and y-intercept parameters.</li>
+</ol>
+<p><img src="../images/rshiny/lm.png" /></p>
+<ol>
+<li><p>`appSchool.R`: A visualisation that enables teachers to decide appropriate grade benchmarks by looking at frequency of students in each grade category. Contains backward update logic of sliders.</p></li>
+<li><p>`appNBA.R`: A visualisation of a popular NBA dataset on kaggle. Here we observe head-to-head statistics from 2014-2018 between Toronto Raptors and other teams. This app uses modern libraries like dplyr and ggplot.</p></li>
+</ol>
+<p><img src="../images/rshiny/nba.png" /></p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>:<a href="https://hackercollective.co/">https://hackercollective.co/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>:<a href="https://RShiny.rstudio.com/gallery/">https://RShiny.rstudio.com/gallery/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>:<a href="https://rstudio.cloud/">https://rstudio.cloud/</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>:<a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/">https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>:<a href="https://github.com/tintinthong/RShiny-tutorial">https://github.com/tintinthong/RShiny-tutorial</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+        <br>
+        <br>
+
+        <!--Share buttons-->
+        <div class="social-buttons">
+            <a href="https://twitter.com/share" class="twitter-share-button"
+                                                data-url="https://tintinthong.github.io" data-text="Check out: Shine with Rshiny - " data-via="tintinthong">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            <a href="https://twitter.com/tintinthong" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @tintinthong</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            <div class="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+        </div>
+</article>
+
+</div>
+
+<footer>
+    Built with Haskell using <a href="https://github.com/ChrisPenner/slick">slick</a> ❤️
+</footer>
+
+<link href='https://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<script src="/js/main.js"></script>
+</body>
+</html>
