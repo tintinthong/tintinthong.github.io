@@ -1,8 +1,9 @@
 #+TITLE: Janteloven
 #+DESCRIPTION: this is a description
+#+DATE: 2016-06-24
+#+AUTHOR: tintinthong
 #+IMAGE: ../images/grod.jpg
 
-**  Some heading here?
 
 Janteloven: I came across this cultural term through my travels to
 Copenhagen, Denmark. If you ask any person in Denmark they
@@ -30,7 +31,10 @@ In this era, contrary to what you might think, the concept of Janteloven is view
 individuality. After all, the
 laws were expressed in harsh and
 patronizing language and some suggest that it was what Aksel meant
-when writing his novel. 
+when writing his novel.
+
+#+attr_html: :width 400px
+[[../images/notes.png]]
 
 Let me share with you a personal account.
 It  happened when I was eating Grod, a popular Danish
@@ -41,26 +45,11 @@ Kronas (approx. RM31.29). Being the
 thrifty person I was, I went back to the
 counter to explain the confusion in
 trade. I was not confident that I would
-get my money back, for two reasons: 1) I would not
-have gotten my money back if this had
-happened either in Malaysia or the UK.
-2) the cashier lady had already carried out
-several orders after mine. When I went
-to the counter to explain to her, she
-seemed awfully confused and forgot what happened when
-we exchanged money. After I tried to
-explain to her, she said,” You know
-what. If you want money, I can just give
-it to you”, extending 100 Kronas to me. “You only
-owe me 50 Kronas. I am so sorry for all
-of this”, I said. She gave me 50 Kronas,
-and said, “Well if you said that I owe
-you 50 Kronas, then I must owe you 50
-Kronas. It’s okay”. This event was
-shocking! An ordinary waiting
-staff had complete trust in my
-honesty and fairness as a complete
-stranger.
+get my money back, for two reasons:
+
+1. I would not have gotten my money back if this had happened either in Malaysia or the UK.
+
+2. the cashier lady had already carried out several order after mine. When I went to the counter to explain to her, she seemed awfully confused and forgot what happened when we exchanged money. After I tried to explain to her, she said,” You know what. If you want money, I can just give it to you”, extending 100 Kronas to me. “You only owe me 50 Kronas. I am so sorry for all of this”, I said. She gave me 50 Kronas, and said, “Well if you said that I owe you 50 Kronas, then I must owe you 50 Kronas. It’s okay”. This event was shocking! An ordinary waiting staff had complete trust in my honesty and fairness as a complete stranger.
 
 I am uncertain which one is more. Was I more bewildered by the the cashier's trust in me (a complete stranger) or the notion that it may be a normal practice ? I hope I am not stretch-associating trust with equality. However, if you think about it; a culture of equals has no business in distrusting. It can make for some pleasantry of one of the happiest countries in the world -- Aksel Sandemose's invisible foot. My favourite holiday is definitely this one. 
 
