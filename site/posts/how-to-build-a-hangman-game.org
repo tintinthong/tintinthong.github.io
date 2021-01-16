@@ -4,13 +4,11 @@
 #+IMAGE: ../images/hangman/hangman.png
 #+AUTHOR: tintinthong
 
-It seems to me that one of the first few things that you'll be told to do as a new javascript programmer is to build a game. At Hacker Collective, we attempted to build a hangman game in the fastest time possible; it took me about 4 hours to build this game.
-
-Note: This article is most suitable for someone who knows Javascript fundamentals. 
+It seems to me that one of the first few things that you'll be told to do as a new javascript programmer is to build a game. At Hacker Collective, we attempted to build a hangman game in the fastest time possible; it took me about 4 hours to build this game. This article is most suitable for someone who knows Javascript fundamentals.
 
 ** Introduction
 
-A lot of my ideas were extracted from a [codepen][1]. The elements of a basic hangman game is straightforward. Have a:
+A lot of my ideas were extracted from a [[https://codepen.io/cathydutton/pen/ldazc][codepen]]. The elements of a basic hangman game is straightforward. Have a:
 
 1. Keyboard of buttons to access input
 2. Canvas to draw the hangman
@@ -447,7 +445,7 @@ From the hangman games I had played online, I realised that most of it was borin
 
 Try these hangman questions out for yourself.
 
-[[../images/hangman/urban_example2]]
+[[../images/hangman/urban_example2.png]]
 
 #+begin_quote
 
@@ -455,7 +453,7 @@ Try these hangman questions out for yourself.
 
 #+end_quote
 
-[[../images/hangman/urban_example4]]
+[[../images/hangman/urban_example4.png]]
 
 #+begin_quote
 > An alcoholic beverage, specifically any type of beer. It doesn't matter which, coz down here in Oz, [no one gives] [a hoot], so long as you [get pissed]!
@@ -478,7 +476,7 @@ We have to install ~urban-dictionary~ modules using
 npm install urban-dictionary
 #+end_src
 
-The great thing about [`urban-dictionary` module][3] is that there is a way to randomise the dictionary word and definition that is returned. There is one caveat: The word and definition is returned as a promise. Unlike anything we have coded here, we have not used any promises. No big deal. The idea of a promise is that we can only extract the data when we have received it, i.e. ~then()~ response will run after the promise is fulfilled. Therefore, we need only include ~play()~ function inside of ~then()~.
+The great thing about [[https://www.npmjs.com/package/urban-dictionary][urban-dictonary]] is that there is a way to randomise the dictionary word and definition that is returned. There is one caveat: The word and definition is returned as a promise. Unlike anything we have coded here, we have not used any promises. No big deal. The idea of a promise is that we can only extract the data when we have received it, i.e. ~then()~ response will run after the promise is fulfilled. Therefore, we need only include ~play()~ function inside of ~then()~.
 
 #+begin_src javascript
 //main.js -- put this at top of your main.js file
@@ -552,7 +550,7 @@ npm run-script build
 #+end_src
 Click on index.html. Below is the result you should obtain. Everytime you refresh a page, there will be a new hint and a new word. Now, you can enjoy obtaining random hangman words from urban-dictionary.
 
-[[../images/urban_examplefinal.png]]
+[[../images/hangman/urban_examplefinal.png]]
 
 
 ** What is missing?
@@ -564,11 +562,6 @@ Click on index.html. Below is the result you should obtain. Everytime you refres
 
 ** Contribute
 
-Let's not pretend that this is a perfectly built app. However, I believe that it has the potential to become a really interesting variation of hangman that many people can enjoy playing. If you have any interesting ideas of suggestions, please contribute here [https://github.com/tintinthong/hangman][2].
-
-
-[1]: https://codepen.io/cathydutton/pen/ldazc
-
-[2]: https://github.com/tintinthong/hangman
+Let's not pretend that this is a perfectly built app. However, I believe that it has the potential to become a really interesting variation of hangman that many people can enjoy playing. If you have any interesting ideas of suggestions, please contribute [[https://github.com/tintinthong/hangman][here]].
 
 [3]: https://www.npmjs.com/package/urban-dictionary

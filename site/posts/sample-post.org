@@ -1,8 +1,8 @@
 t
 #+TITLE: Sample Post
-# #+AUTHOR: tintinthong
-#+DATE: <2021-01-11 Mon>
+#+DATE: 2021-01-11
 #+DESCRIPTION: this is a description
+#+AUTHOR: tintinthong
 #+IMAGE: ../images/catalan.png
 
 Note: h1 heading is not supported in this template, but you can resolve that by just giving a styel to the html tag.
@@ -58,7 +58,6 @@ quicksort (x:xs) =
 - [ ] Own a dryer
 
 **** TODO Do what mum told you [1/3]
-DEADLINE: <2022-01-12 Wed>
 - [ ] grow up
 - [ ] stop acting like a kid
 - [X] move out of the house
@@ -71,4 +70,15 @@ DEADLINE: <2022-01-12 Wed>
 [[../images/chess.jpg]]
 
 *** Reflink
+# https://emacs.stackexchange.com/questions/594/how-to-implement-markdown-style-link-ids-in-org-mode
+
+[[lid:wiki][You should check out the wiki]]
 *** Maths
+
+#+begin_latex
+\begin{array}{*{20}c}
+   {x = \frac{{ - b \pm \sqrt {b^2  - 4ac} }}{{2a}}} & {{\rm{when}}} & {ax^2  + bx + c = 0}  \\
+\end{array}
+#+end_latex
+
+#+LINK-ID: wiki http://www.emacswiki.org
