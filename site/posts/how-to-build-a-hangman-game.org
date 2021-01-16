@@ -21,7 +21,7 @@ Initially, I truly wanted to copy the pen and add features on top of it, however
 
 ** Building the UI
 
-Firstly, let us begin by crafting the html file. I knew for a fact that I would have to dynamically add elements to the DOM, e.g. there are different number of blanks. Hence, my html file will not have all it's element in place until later on when I write `main.js`, the main javascript file. Within html, I source a `main.js` and `style.css`.
+Firstly, let us begin by crafting the html file. I knew for a fact that I would have to dynamically add elements to the DOM, e.g. there are different number of blanks. Hence, my html file will not have all it's element in place until later on when I write ~main.js~, the main javascript file. Within html, I source a ~main.js~ and ~style.css~.
 
 #+begin_src html
 <!-- index.html -->
@@ -66,12 +66,12 @@ Firstly, let us begin by crafting the html file. I knew for a fact that I would 
 </html>
 #+end_src
 
-Additionally, we load the `style.css` files. We do several things with the style. 
+Additionally, we load the ~style.css~ files. We do several things with the style.
 
-1. We make the `#blank` and `#letter` which is a `<li></li>` tag to be inline; the `#blank` is the empty spaces for the answer and the `#letter` is container of the buttons to input guessed letter.
-2. `#introHeader` is the container of a `<h1></h1>` and `<p></p>`; I made them inline (on the same row).
-3. Change the color of button to yellow upon `.hover`. 
-4. I changed the fonts for `#introHeader` and `#hint`.
+1. We make the ~#blank~ and ~#letter~ which is a ~<li></li>~ tag to be inline; the ~#blank~ is the empty spaces for the answer and the ~#letter~ is container of the buttons to input guessed letter.
+2. ~#introHeader~ is the container of a ~<h1></h1>~ and ~<p></p>~; I made them inline (on the same row).
+3. Change the color of button to yellow upon ~.hover~.
+4. I changed the fonts for ~#introHeader~ and ~#hint~.
 
 #+begin_src css
 /* style.css */
@@ -103,14 +103,14 @@ Additionally, we load the `style.css` files. We do several things with the style
 
 #+end_src
 
-Chances are you see something as below. Wait a minute. Where is `#blank`? Where is `#buttonLetter`?
+Chances are you see something as below. Wait a minute. Where is ~#blank~? Where is ~#buttonLetter~?
 The reason for that is that the tags don't exist yet. We need to impute html tags from our javascript, but we haven't written that code yet.
 
 [[../images/hangman/ui.png]]
 
 ** Build the Logic
 
-Here is the most important file, `main.js`. It is where we create the javscript -- the logic of the game. We have a play function that takes in `result_word` and `result_definition~ (a word and it's corresponding definition).
+Here is the most important file, ~main.js~. It is where we create the javscript -- the logic of the game. We have a play function that takes in ~result_word~ and ~result_definition~ (a word and it's corresponding definition).
 
 #+begin_src javascript
 //main.js
@@ -124,7 +124,7 @@ let play = function(result_word, result_definition){
 To build the logic, we need to instantiate a few objects. 
 
 1. *player*: A player object ( mainly to store how many lives left)
-2. *game*: A game object to keep list of 26 alphabets, `word` object used and `correctList* which keeps track of winning condition.
+2. *game*: A game object to keep list of 26 alphabets, ~word~ object used and ~correctList~ which keeps track of winning condition.
 3. *drawing*: Canvas object for drawing on.
 
 #+begin_src javascript
@@ -180,8 +180,8 @@ To build the logic, we need to instantiate a few objects.
 
 
 There are also several helper functions: 
-1. ~stringToList()~: Transpose string to list. For example, `"food panda" --> ["f","o","o","d"," ","p","a","n","d","a"]`.
-2. =drawLine()~: Simplifies code for drawing. It references a coordinate system `(x1,y1) --> (x2,y2)* beginning from the top-left of the canvas.
+1. ~stringToList()~: Transpose string to list. For example, ~"food panda" --> ["f","o","o","d"," ","p","a","n","d","a"]~.
+2. ~drawLine()~: Simplifies code for drawing. It references a coordinate system ~(x1,y1) --> (x2,y2)~ beginning from the top-left of the canvas.
 
 #+begin_src
 //main.js
