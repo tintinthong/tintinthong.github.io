@@ -1,4 +1,4 @@
-
+t
 #+TITLE: Sample Post
 # #+AUTHOR: tintinthong
 #+DATE: <2021-01-11 Mon>
@@ -40,6 +40,16 @@ quicksort (x:xs) =
 *** Links
 
 [[../images/chess.jpg][Chess Picture]]
+
+*** Quote
+#+begin_quote
+"I… Declare…. Bankruptcy!"
+#+end_quote
+
+*** Fonts
+
+*Bold*, /italic/, ~code~, _underlind_, =verbatim=
+
 *** Bullet Points
 
 **** Goals and ambitions
@@ -60,3 +70,5 @@ DEADLINE: <2022-01-12 Wed>
 #+attr_html: :width 200px
 [[../images/chess.jpg]]
 
+*** Reflink
+*** Maths
