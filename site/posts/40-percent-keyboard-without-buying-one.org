@@ -1,0 +1,91 @@
+#+TITLE: 40% keyboard on Mac without buying one
+
+* Setup
+
+#+begin_src bash
+# install karabiner on your own first
+brew install yqrashawn/goku/goku
+# rename Default Profile to Default
+goku # Done!
+#+end_src
+
+* Description
+
+A 40% prebuilt Corne cost 150$ excluding keycaps and keyswitches. I don't blame the sellers as this is considered reasonable price considering the effort of accumulating parts and the price of material. These novel pcbs are also in low supply in the market it can be either a long wait for the season of releases new set of pcbs or you pay a premium. My biggest qualm is that a purchase at this cost has no guarantees/warranties. The alternative - would be an upmarket keyboard like the Placnk Ez which offer a 2-year warranty and cost 300$.
+
+I am here to convince you that a 40% keyboard is not worth it and you can re-create the entire experience all on your existing keyboard just by remapping keys using existing firmware interfaces. Even if you are already keen on buying a keyboard, I invite you to at least try and experiment because you may need to make these configurations still.
+
+* Does this configuration fit you?
+
+** The common use-case of my keyboard are
+- using doom emacs
+- using vim
+- managing Desktop windows
+
+** Ideal User
+- Someone who seeks a keyboard-only workflow
+- A vim user; Someone who is willing to sacrifice arrow keys
+- Someone planning to invest in a 40% keyboard
+- Someone locked into the MacOs Ecosystem
+
+** Reasons for a 40% keyboard
+*** Avoid stretching my fingers all-over the place
+- reduce the amount of errors
+- didn't want RSI
+*** Code at the speed of thought so I can make coding streams that were not slow and boring
+- increase words per minute
+- fast window navigation fast
+*** Use QMK for configurability
+- use layers to toggle a new keymap
+
+* Thought Process
+
+All reasons for 40% keyboard relates to how a person uses a keyboard. The only difference between a full 100% is that you are FORCED to use it this way (not move your fingers too much), which to me can be overcame with discipline and software.
+
+Of all the reasons listed above, QMK is a strong one. But, this lies under the assumption that the existing alternatives that are available for the your laptop are insufficient. FOR ME - it was sufficient
+
+**  Hypotheses
+- Most reasons listed for 40% keyboard can be satisfied by changing keybindings ONLY
+- Sufficient configurability can be achieved without QMK/TMK/etc
+
+* Software
+
+I am using [[https://karabiner-elements.pqrs.org/][Karabiner]] as my key-remapping tool and [[https://karabiner-elements.pqrs.org/][Goku]] as the primary configuration DSL for Karabiner.
+
+* Keybinding Philosophy
+
+The ultimate restriction that I impose on myself is that I am only allowed to use 41 keys on a mac keyboard. Yes 41 keys, which is ridiculously little.
+
+** Concepts
+*** 40%
+ We need to keep our hands only 1 key away from the pressing button. Naturally, I have removed a set of keys. When I say "removed", what I mean is that I have created a finger-path that requires less movment of the fingers; you can still use the keys as they originally are.
+- Arrow keys
+- Number/Symbol keys (including parantheses)
+- Math keys (-,+)
+- Far-reaching keys \,`,delete,]
+- Also for no good reason I have removed h ]
+*** Spatially and sequentially aware
+There is a logical placement to keys. Most people like to optimise by placing the keys they use the most at the most comfortable places; I consider this important but I do so while still keeping my keymaps mildly deducible.
+- Parantheses: Closing and opening should mirror each other and should be either side of the keyboard.
+- Key Chord: Because of limitation of keychors not being to lifted by shift layer, any key chord will have its shift-variant strategically placed too. For example, j+k and d+f represent equals and plus respectively.
+- Symbols with numbers: Symbols and numbers are separated, although they are shift-variants of one another. But, the keys for symbols go up in systematic order.
+*** Key-Chord-centric
+Key-Chord or simulataneous-key presses are so underrated. By pressing two keys simultaneously, I can get a generate input of ANY key. Most application keybindings NEVER EVER EVER a key-chord. Therefore, if you want to have keymappings clean and uninterrupted, this is the safest way to go. These are done for parantheses-like symbols, math-keys and backslash.
+*** Won't affect system level keybindings & Minimally affect application-level keybindings
+I did not want to interfere with shortcut keys that use conventional modifiers in a person's workflow. Therefore, I used z and . as the modifier keys because they are unfrequented keys. I even go as far as to not use spacebar and , because they are two most common leader keys in emacs and vim distributions. The reason two duplicate modifier keys is to aid the touch-typing.
+*** OS Agnostic
+This configuration will work for both Linux, Windows and Mac distributions.  Atm, this is just on karabiner, but I plan to move everything to kmonad next.
+*** Eliminate Corner Movements
+The worse movements are stretching to the far corners of the keyboard:
+- Map caps lock to control (Single press will make caps lock esc)
+- Map Ctrl+h to Delete/Backspace
+- Mao Ctrl+w to function of removing word
+- For Mac or PC, eliminate the use of control and fn keys at the bottom-left of the keyboard
+*** Use of both hands
+I expect the user to use both hands to get the most out of this keybinding. This similar to touch-typing where the shift key of the opposite side of the keyboard as the key being pressed is used to activate the layer.
+
+* Possibly Asked Questions (PAQ)
+** Shall I disable the other keys?
+As an exercise to learn the new keybindings - yes. For your day-to-day, you don't need to. The absurdity of a 40% keyboard is that you eliminate the option of using other keys on the keyboard. I never remove keys, I just make an easier path to pressing the keys that are already on keyboard.
+** Any issues with this keybinding?
+Yes. I use (z .) a lot in doom emacs. Since I use z and . as a modifier, I have to wait awhile so when hitting (z . | z z) so that the keys are not interpreted as any layer key. Also, some evil-mc and multiple cursors keybindings are affected in the same way. I considered perhaps using x but that letter is just involved in alot of emacs bindings in general tho feel free to try it to see if it works for you.

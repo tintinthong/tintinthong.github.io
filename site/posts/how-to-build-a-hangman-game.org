@@ -564,4 +564,3 @@ Click on index.html. Below is the result you should obtain. Everytime you refres
 
 Let's not pretend that this is a perfectly built app. However, I believe that it has the potential to become a really interesting variation of hangman that many people can enjoy playing. If you have any interesting ideas of suggestions, please contribute [[https://github.com/tintinthong/hangman][here]].
 
-[3]: https://www.npmjs.com/package/urban-dictionary
